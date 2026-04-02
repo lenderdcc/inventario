@@ -54,7 +54,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', env('RAILWAY_PUBLIC_DOMAIN')
+        ? 'https://' . env('RAILWAY_PUBLIC_DOMAIN')
+        : 'http://localhost'),
 
     'asset_url' => env('ASSET_URL'),
 
