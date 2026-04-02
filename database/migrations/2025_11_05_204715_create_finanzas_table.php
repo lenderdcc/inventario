@@ -16,7 +16,7 @@ return new class extends Migration
     Schema::create('finanzas', function (Blueprint $table) {
         $table->id();
         $table->unsignedBigInteger('producto_id');
-        $table->unsignedBigInteger('usuario_id');
+        $table->unsignedBigInteger('user_id');
         $table->enum('metodo_pago', ['efectivo', 'tarjeta', 'transferencia', 'otro']);
         $table->enum('estado_pago', ['pendiente', 'completado', 'fallido']);
         $table->string('referencia_pago', 100)->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
         $table->timestamp('fecha_procesado')->useCurrent();
 
         $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
-        $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
+        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
     });
 }
 
